@@ -1,0 +1,33 @@
+body{
+    background-color: rgb(240, 93, 39);
+}
+
+
+
+#Mainbutton{
+      
+      text-align: center;
+      height: 100px;
+
+}
+
+#Mainbutton1{
+    border: solid 2px rgb(194, 203, 209);
+    margin-top: 200px;
+    height: 60px;
+    width: 180px;
+    background-color: rgb(41, 38, 187);
+    
+}
+
+
+#Mainbutton1:hover{
+    background-color: rgb(14, 12, 12);
+    color: thistle;
+}
+
+#label{
+    font-size: 40px;
+    color: rgb(0, 0, 0);
+    font-style: oblique;
+}
