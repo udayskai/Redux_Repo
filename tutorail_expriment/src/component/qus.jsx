@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
+import axios from 'axios'
+import Child from './child'
+
 
 
 class Qus extends Component {
@@ -15,19 +18,17 @@ class Qus extends Component {
      }
    }
 
-   componentDidMount(){
-      fetch(`https://www.mocky.io/v2/56fcf6871000000e13aed252`)
-       .then(response=>response.json())
-       .then(info=>{ this.setState({data:info.slice(0,7)},()=>{console.log(this.state.data)})})
-    
-     
-   }
+   async componentDidMount(){
+     let data1= await  axios.get(`https://www.mocky.io/v2/56fcf6871000000e13aed252`)
+       this.setState({data:data1.data.slice(0,7)})
+    }
 
 
    onClickMethod=()=>{
     this.setState({switch:false});
     this.setState({console1:this.state.data[this.state.first]})
     this.setState({first:this.state.first+1})
+    console.log(this.state.switch,"increment value>",this.state.first,"apidata>",this.state.data,"single data",this.state.console1);
     
     // console.log(this.state.console1,"here th mian data",this.state.first)
   }
@@ -44,11 +45,14 @@ class Qus extends Component {
      }
 
      else{
+         
            if (this.state.first<6){
             return (
+             
                  <div className="App container">
-                     <button type="button" className="btn btn-danger mt-5 btn-lg pl-4 pr-4 pt-2 pb-2" onClick={this.onClickMethod}>Next Qus</button>
-                      <h1  className="mt-5" style={{color:"gray" ,backgroundColor:"White"}} >{this.state.console1.title}</h1>
+                    <Child responses={this.state.console1}/>
+                     <button type="button" className="btn btn-danger mt-5 btn-lg pl-4 pr-4 pt-2 pb-2" onClick={this.onClickMethod}>Next Qus ...</button>
+                      <h1  className="mt-5" style={{color:"gray" ,backgroundColor:"White"}} >{this.state.console1.title}  ?</h1>
                       <p className="mt-5" style={{fontSize:"19px"}}>{this.state.console1.description}</p>
                  </div> )
           }
@@ -56,7 +60,7 @@ class Qus extends Component {
           else{
              return (
                 <div style={{textAlign:"center",marginTop:"150px"}}> <Link  to="/"className="btn btn-success btn-lg" type="submit"> Submit the Survey</Link>  
-                <p>Thank you</p></div>
+                <p className="mt-4"  style={{fontSize:"25px"}} >Thank you</p></div>
             
               )
           } }
