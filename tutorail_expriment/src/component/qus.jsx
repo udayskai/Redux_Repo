@@ -20,12 +20,14 @@ class Qus extends Component {
 
    async componentDidMount(){
      let data1= await  axios.get(`https://www.mocky.io/v2/56fcf6871000000e13aed252`)
-       this.setState({data:data1.data.slice(0,7)})
+       this.setState( (a,_)=>{ return{data:a.data1.data}});
+       console.log(this.state.data);
     }
 
 
    onClickMethod=()=>{
     this.setState({switch:false});
+    
     this.setState({console1:this.state.data[this.state.first]})
     this.setState({first:this.state.first+1})
     console.log(this.state.switch,"increment value>",this.state.first,"apidata>",this.state.data,"single data",this.state.console1);
@@ -40,6 +42,8 @@ class Qus extends Component {
               <div className="text-center switch " style={{marginTop:"150px"}} >
               <button type="button" className="btn btn-primary  pb-4 mt-5 btn-lg "  style={{height:"60px",width:"200px",fontSize:"38px"}} onClick={this.onClickMethod}>Ready</button>
               </div>
+
+              
             )
         
      }
