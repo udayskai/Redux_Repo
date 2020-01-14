@@ -1,7 +1,7 @@
 
 import {database,auth,googleProvider} from '../firebase';
 
-
+//remove
 export  const OnRemove = (id)=>{
     console.log("oppo")
  return async (dispatch)=>
@@ -10,12 +10,13 @@ export  const OnRemove = (id)=>{
 
   
 
-
+//update
 export  const OnUpdate = (data)=>{
     return async (dispatch)=>
  {database.push(data)}
 }
 
+//signIn
 export const GoogleSignIn=()=>{
    return async(dispatch)=>{
       await auth.signInWithPopup(googleProvider)
@@ -26,7 +27,7 @@ export const GoogleSignIn=()=>{
 
 export const FetchData=()=>{
    return async(dispatch)=>{
-      await auth.onAuthStateChanged(data=>{dispatch({type:"User_Data",payload:data})
+      await auth.onAuthStateChanged(data=>{ dispatch({type:"User_Data",payload:data})
    })
   }
 } 
@@ -34,10 +35,3 @@ export const FetchData=()=>{
 
 
 
-// const OnFetch = ()=>{
-//     console.log("oppo")
-//  return async (dispatch)=>
-//  {database.child(id).remove();}
-// }
-
-//  

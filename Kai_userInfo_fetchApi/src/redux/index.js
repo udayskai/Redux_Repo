@@ -1,10 +1,10 @@
 
 import {combineReducers} from 'redux'
-import UserData from "./userdata"
+import UserData from "./userdata.js"
 
 const RootReducer=()=>{
     combineReducers({data:UserData})
-    console.log("im reducer")
+    console.log("im reducer",)
    
 }
  

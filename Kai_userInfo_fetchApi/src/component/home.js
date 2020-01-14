@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import {database} from '../firebase'
 import _ from 'lodash';
-import {OnRemove} from '../action/index';
+import {OnRemove, FetchData} from '../action/index';
 import {connect} from 'react-redux';
+
 class Home extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
             userDatabase:""
         }
+        console.log(props,"eeeee");
     }
 
 
@@ -49,9 +51,10 @@ class Home extends Component{
     }
 };
 
-// var Callreduce=(state)=>{
-//     return {};
+// const mapStateToProps = state => {
+//     return (state.data)
 
-// }
+//   }
+  
 
-export default  connect( null,{OnRemove})(Home);
+export default  connect(mapStateToProps,{OnRemove,FetchData})(Home);

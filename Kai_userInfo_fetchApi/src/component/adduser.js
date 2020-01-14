@@ -4,13 +4,15 @@ import {OnUpdate} from '../action/index'
 import {connect} from 'react-redux'
 
 class AddUser extends Component{
-     constructor(){
-         super();
+     constructor(props){
+         super(props);
           this.state={
               userId:"",
               userName:"",
               userAddress:"" 
+
             };
+          
            }
       
 
@@ -26,6 +28,7 @@ class AddUser extends Component{
    
     onSubmitMd=(e)=>{
          e.preventDefault();
+       
             let Data={
             Id:this.state.userId,
             Name:this.state.userName,
@@ -35,7 +38,10 @@ class AddUser extends Component{
            this.setState({userId:""});
            this.setState({userName:""});
            this.setState({userAddress:""});
+
         }
+
+        
 
 
 render(){
@@ -56,6 +62,10 @@ render(){
            
         )
     }
+    
 }
 
+
+
+ 
 export default  connect(null,{OnUpdate})(AddUser);
